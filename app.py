@@ -13,10 +13,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'lance'
 api = Api(app)
 
-@app.before_first_request
-def create_tables():
-	db.create_all()
-
 # change authentication URL (must happens before jwt = JWT(...))
 #app.config['JWT_AUTH_ARL_RULE'] = '/login'
 jwt = JWT(app, authenticate, identity_function)
